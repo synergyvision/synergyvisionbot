@@ -15,7 +15,7 @@ bot.hears('hola', (context)=>{
   context.reply('Hola cómo estas?')
 })
 
-bot.hears(/compra/curso, (context)=> {
+bot.hears(/compra/i, (context)=> {
   context.reply('Compra! Compra!')
 })
 
