@@ -1,5 +1,7 @@
+const express = require('express')
 const Telegraf = require('telegraf')
 
+const app = new express()
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 bot.start((context)=>{
@@ -24,3 +26,7 @@ bot.on('sticker', (context)=>{
 })
 
 bot.startPolling()
+
+app.get('/', (req, res) => res.send('Synergy Vision Bot is on!'))
+
+app.listen(3000, () => console.log('Synergy Vision Bot listening on port 3000!'))
