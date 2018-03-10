@@ -29,4 +29,4 @@ bot.startPolling()
 
 app.get('/', (req, res) => res.send('Synergy Vision Bot is on!'))
 
-app.listen(process.env.PORT || 3000, () => console.log('Synergy Vision Bot listening on port 3000!'))
+app.listen(process.env.PORT || 3000, "0.0.0.0", () => console.log('Synergy Vision Bot listening on port 3000!'))
