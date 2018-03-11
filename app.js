@@ -13,15 +13,15 @@ bot.start((context)=>{
   return context.reply('El Bot de Synergy Vision te da la bienvenida.')
 })
 
-bot.command('ayuda', (context)=> {
+bot.command('ayuda', (context) => {
   context.reply('Esta es la ayuda!!')
 })
 
-bot.hears('hola', (context)=>{
+bot.hears('hola', (context) => {
   context.reply('Hola cómo estas?')
 })
 
-bot.hears(/compra/i, (context)=> {
+bot.hears(/compra/i, (context) => {
   context.reply('Compra! Compra!')
 })
 
@@ -29,16 +29,8 @@ bot.on('sticker', (context) => {
   context.reply('👍')
 })
 
-bot.on('message', (context) => {
-  const name = context.from.first_name
-  reply('Hola, ' + name + '!')
-})
+bot.hears(/reverse (.+)/, ({ match, reply }) => reply(match[1].split('').reverse().join('')))
 
-bot.hears(/reverse (.+)/, ({ match, reply }) => {
-  reply(match[1].split('').reverse().join(''))
-})
-
-// sum command
 bot.hears(/^\/sum((\s+\d+)+)$/, ({ match, reply }) => {
   var result = 0;
   match[1].trim().split(/\s+/).forEach((i) => {
