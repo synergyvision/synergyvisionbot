@@ -31,9 +31,7 @@ bot.on('sticker', (context) => {
 
 bot.on('message', (context) => {
   const name = context.from.first_name
-  bot.sendMessage(msg.chat.id, 'Hola, ' + name + '!').then(() => {
-    // reply sent!
-  })
+  reply('Hola, ' + name + '!')
 })
 
 bot.hears(/reverse (.+)/, ({ match, reply }) => {
