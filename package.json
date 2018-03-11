@@ -22,8 +22,6 @@
   },
   "homepage": "https://github.com/synergyvision/synergyvisionbot#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
     "telegraf": "^3.19.0"
   }
 }
