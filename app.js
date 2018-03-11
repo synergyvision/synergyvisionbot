@@ -1,9 +1,12 @@
-const express = require('express')
-const packageInfo = require("./package.json")
-const bodyParser = require('body-parser')
-const Telegraf = require('telegraf')
+const Telegraf = require('telegraf');
 
-const bot = new Telegraf(process.env.BOT_TOKEN)
+const API_TOKEN = process.env.BOT_TOKEN || ''
+const PORT = process.env.PORT || 3000
+const URL = process.env.BOT_URL
+
+const bot = new Telegraf(API_TOKEN);
+bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
+bot.startWebhook(`/bot${API_TOKEN}`, null, PORT)
 
 bot.start((context)=>{
   console.log('synergyvisionbot started', context.from.id)
@@ -24,22 +27,4 @@ bot.hears(/compra/i, (context)=> {
 
 bot.on('sticker', (context) => {
   context.reply('👍')
-})
-
-bot.telegram.setWebhook(process.env.BOT_URL+'bot'+process.env.BOT_TOKEN)  
-
-const app = express()
-app.use(bodyParser.json())
-
-app.get('/', (req, res) => {
-  res.json({ version: packageInfo.version })
-})
-
-app.use(bot.webhookCallback('/bot'+process.env.BOT_TOKEN))
-
-const server = app.listen(process.env.PORT, '0.0.0.0', () => {
-  const host = server.address().address
-  const port = server.address().port
-
-  console.log('Web server started at https://%s:%s', host, port)
 })
