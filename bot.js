@@ -5,7 +5,7 @@ var bot;
 
 if(process.env.NODE_ENV === 'production') {
   bot = new Bot(token);
-  bot.setWebHook(process.env.BOT_URL + bot.token);
+  bot.setWebHook(process.env.BOT_URL + 'svbot');
 }
 else {
   bot = new Bot(token, { polling: true });
