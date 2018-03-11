@@ -10,7 +10,7 @@ app.get('/', (req, res)=>{
   res.json({ version: packageInfo.version })
 })
 
-app.use(bot.webhookCallback('/svbot'))
+app.use(bot.webhookCallback('/'+process.env.BOT_TOKEN))
 
 const server = app.listen(process.env.PORT, '0.0.0.0', ()=>{
   const host = server.address().address
