@@ -1,34 +1,32 @@
-const token = process.env.BOT_TOKEN
+const Telegraf = require('telegraf')
 
-const Bot = require('node-telegram-bot-api')
-var bot
+const bot = new Telegraf(process.env.BOT_TOKEN)
 
-if (process.env.NODE_ENV === 'production') {
-  bot = new Bot(token)
-  bot.setWebHook(process.env.BOT_URL + bot.token)
+bot.start((context)=>{
+  console.log('synergyvisionbot started', context.from.id)
+  return context.reply('El Bot de Synergy Vision te da la bienvenida.')
+})
+
+bot.command('ayuda', (context)=> {
+  context.reply('Esta es la ayuda!!')
+})
+
+bot.hears('hola', (context)=>{
+  context.reply('Hola cómo estas?')
+})
+
+bot.hears(/compra/i, (context)=> {
+  context.reply('Compra! Compra!')
+})
+
+bot.on('sticker', (context)=>{
+  context.reply('👍')
+})
+
+if (process.env.NODE_ENV==='production') {
+  bot.telegram.setWebhook(process.env.BOT_URL+process.env.BOT_TOKEN)  
 } else {
-  bot = new Bot(token, { polling: true })
+  bot.startPolling()
 }
-
-console.log('synergyvisionbot server started...')
-
-// hello command
-bot.onText(/^\/hola (.+)$/, (msg, match) => {
-  var name = match[1]
-  bot.sendMessage(msg.chat.id, 'Hola ' + name + '!').then( () => {
-    // reply sent!
-  })
-})
-
-// sum command
-bot.onText(/^\/suma((\s+\d+)+)$/, (msg, match) => {
-  var result = 0
-  match[1].trim().split(/\s+/).forEach( (i) => {
-    result += (+i || 0)
-  })
-  bot.sendMessage(msg.chat.id, result).then( () => {
-    // reply sent!
-  })
-})
 
 module.exports = bot

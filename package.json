@@ -1,18 +1,29 @@
 {
   "name": "synergyvisionbot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Synergy Vision Telegram Bot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synergyvision/synergyvisionbot.git"
+  },
+  "keywords": [
+    "Telegram",
+    "Bot"
+  ],
+  "author": "Synergy Vision",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synergyvision/synergyvisionbot/issues"
+  },
+  "homepage": "https://github.com/synergyvision/synergyvisionbot#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "node-telegram-bot-api": "^0.30.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "author": "",
-  "license": "ISC"
+    "telegraf": "^3.19.0"
+  }
 }
