@@ -22,15 +22,15 @@ bot.hears(/compra/i, (context)=> {
   context.reply('Compra! Compra!')
 })
 
+bot.on('text', ({ replyWithHTML }) => { 
+  replyWithHTML('<b>Hey there!</b>')
+})
+
 bot.on('sticker', (context)=>{
   context.reply('👍')
 })
 
-if (process.env.NODE_ENV==='production') {
-  bot.telegram.setWebhook(process.env.BOT_URL+process.env.BOT_TOKEN)  
-} else {
-  bot.startPolling()
-}
+bot.telegram.setWebhook(process.env.BOT_URL+process.env.BOT_TOKEN)  
 
 const app = express()
 app.use(bodyParser.json())
