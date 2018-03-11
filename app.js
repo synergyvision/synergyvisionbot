@@ -22,24 +22,20 @@ bot.hears(/compra/i, (context)=> {
   context.reply('Compra! Compra!')
 })
 
-bot.on('text', ({ replyWithHTML }) => { 
-  replyWithHTML('<b>Hey there!</b>')
-})
-
-bot.on('sticker', (context)=>{
+bot.on('sticker', (context) => {
   context.reply('👍')
 })
 
-bot.telegram.setWebhook(process.env.BOT_URL+process.env.BOT_TOKEN)  
+bot.telegram.setWebhook(process.env.BOT_URL+'bot'process.env.BOT_TOKEN)  
 
 const app = express()
 app.use(bodyParser.json())
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
   res.json({ version: packageInfo.version })
 })
 
-app.use(bot.webhookCallback('/'+process.env.BOT_TOKEN))
+app.use(bot.webhookCallback('/bot'+process.env.BOT_TOKEN))
 
 const server = app.listen(process.env.PORT, '0.0.0.0', () => {
   const host = server.address().address
