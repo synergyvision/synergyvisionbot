@@ -1,6 +1,7 @@
 const express = require('express')
 const packageInfo = require("./package.json")
 const bodyParser = require('body-parser')
+const bot = require("./bot")
 
 const app = express()
 app.use(bodyParser.json())
