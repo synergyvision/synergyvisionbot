@@ -3,6 +3,7 @@
 
 - [First Blog post](https://github.com/mvalipour/telegram-bot-webhook)
 - [Second Blog post](https://github.com/volodymyrlut/heroku-node-telegram-bot)
+- [Heroku Node Telegram Bot](https://github.com/volodymyrlut/heroku-node-telegram-bot)
 
 # Enviroment variables
 

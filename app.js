@@ -28,3 +28,24 @@ bot.hears(/compra/i, (context)=> {
 bot.on('sticker', (context) => {
   context.reply('👍')
 })
+
+bot.on('message', (context) => {
+  const name = context.from.first_name
+  bot.sendMessage(msg.chat.id, 'Hola, ' + name + '!').then(() => {
+    // reply sent!
+  })
+})
+
+bot.hears(/reverse (.+)/, ({ match, reply }) => {
+  reply(match[1].split('').reverse().join(''))
+})
+
+// sum command
+bot.hears(/^\/sum((\s+\d+)+)$/, ({ match, reply }) => {
+  var result = 0;
+  match[1].trim().split(/\s+/).forEach((i) => {
+    result += (+i || 0)
+  })
+  reply(result)
+})
+
