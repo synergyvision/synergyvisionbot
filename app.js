@@ -26,7 +26,7 @@ bot.on('sticker', (context) => {
   context.reply('👍')
 })
 
-bot.telegram.setWebhook(process.env.BOT_URL+'bot'process.env.BOT_TOKEN)  
+bot.telegram.setWebhook(process.env.BOT_URL+'bot'+process.env.BOT_TOKEN)  
 
 const app = express()
 app.use(bodyParser.json())
