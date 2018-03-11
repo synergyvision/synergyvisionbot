@@ -1,7 +1,7 @@
 const token = process.env.BOT_TOKEN
 
 const Bot = require('node-telegram-bot-api')
-const bot
+var bot
 
 if (process.env.NODE_ENV === 'production') {
   bot = new Bot(token)
