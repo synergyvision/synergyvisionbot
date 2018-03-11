@@ -24,7 +24,7 @@ bot.on('sticker', (context)=>{
 })
 
 if (process.env.NODE_ENV==='production') {
-  bot.telegram.setWebhook(process.env.BOT_URL)  
+  bot.telegram.setWebhook(process.env.BOT_URL+'/svbot')  
 } else {
   bot.startPolling()
 }
