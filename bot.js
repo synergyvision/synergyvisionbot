@@ -1,35 +1,34 @@
-var token = process.env.BOT_TOKEN;
+const token = process.env.BOT_TOKEN
 
-var Bot = require('node-telegram-bot-api');
-var bot;
+const Bot = require('node-telegram-bot-api')
+const bot
 
-if(process.env.NODE_ENV === 'production') {
-  bot = new Bot(token);
-  bot.setWebHook(process.env.BOT_URL + 'svbot');
+if (process.env.NODE_ENV === 'production') {
+  bot = new Bot(token)
+  bot.setWebHook(process.env.BOT_URL + bot.token)
+} else {
+  bot = new Bot(token, { polling: true })
 }
-else {
-  bot = new Bot(token, { polling: true });
-}
 
-console.log('bot server started...');
+console.log('synergyvisionbot server started...')
 
 // hello command
-bot.onText(/^\/say_hello (.+)$/, function (msg, match) {
-  var name = match[1];
-  bot.sendMessage(msg.chat.id, 'Hello ' + name + '!').then(function () {
+bot.onText(/^\/hola (.+)$/, (msg, match) => {
+  var name = match[1]
+  bot.sendMessage(msg.chat.id, 'Hola ' + name + '!').then( () => {
     // reply sent!
-  });
-});
+  })
+})
 
 // sum command
-bot.onText(/^\/sum((\s+\d+)+)$/, function (msg, match) {
-  var result = 0;
-  match[1].trim().split(/\s+/).forEach(function (i) {
-    result += (+i || 0);
+bot.onText(/^\/suma((\s+\d+)+)$/, (msg, match) => {
+  var result = 0
+  match[1].trim().split(/\s+/).forEach( (i) => {
+    result += (+i || 0)
   })
-  bot.sendMessage(msg.chat.id, result).then(function () {
+  bot.sendMessage(msg.chat.id, result).then( () => {
     // reply sent!
-  });
-});
+  })
+})
 
-module.exports = bot;
+module.exports = bot
