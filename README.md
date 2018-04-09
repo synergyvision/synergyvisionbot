@@ -1,4 +1,17 @@
 
+# How to use the bot and modify it
+
+- Clone the repo git://github.com/synergyvision/synergyvisionbot.git"
+- Run `npm install`
+- Use git commands to modify the bot
+
+```
+git add .
+git commit -m "Comment"
+git push origin master
+```
+When you make `push` heroku deploys the code automagically..!!
+
 # References
 
 - [First Blog post](https://github.com/mvalipour/telegram-bot-webhook)
