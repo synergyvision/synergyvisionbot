@@ -39,3 +39,10 @@ bot.hears(/^\/sum((\s+\d+)+)$/, ({ match, reply }) => {
   reply(result)
 })
 
+bot.hears(/^\/prod((\s+\d+)+)$/, ({ match, reply }) => {
+  var result = 0;
+  match[1].trim().split(/\s+/).forEach((i) => {
+    result *= (+i || 1)
+  })
+  reply(result)
+})
