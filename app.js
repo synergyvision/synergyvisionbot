@@ -46,3 +46,7 @@ bot.hears(/^\/prod((\s+-?\d+(\.\d+)?)+)$/, ({ match, reply }) => {
   })
   reply(result.toFixed(2))
 })
+
+bot.hears(/^(.*)$/, ({ match, reply }) => {
+  reply("Me dijiste "+match[1]+" y no sé que hacer.")
+})
