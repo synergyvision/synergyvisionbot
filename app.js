@@ -31,7 +31,7 @@ bot.on('sticker', (context) => {
 
 bot.hears(/reverse (.+)/, ({ match, reply }) => reply(match[1].split('').reverse().join('')))
 
-bot.hears(/^\/sum((\s+\d+)+)$/, ({ match, reply }) => {
+bot.hears(/^\/sum((\s+-?\d+(\.\d+)?)+)$/, ({ match, reply }) => {
   var result = 0;
   match[1].trim().split(/\s+/).forEach((i) => {
     result += (+i || 0)
